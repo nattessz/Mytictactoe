@@ -1,6 +1,8 @@
 package com.example.mytictactoe;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.ColorSpace;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.VibrationEffect;
@@ -80,8 +82,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
         if (player1Turn){
             ((Button)v).setText("X");
+            ((Button)v).setTextColor(0xFF1931E5);
         } else {
             ((Button)v).setText("O");
+            ((Button)v).setTextColor(0xFFff202b);
         }
 
         roundCount++;
