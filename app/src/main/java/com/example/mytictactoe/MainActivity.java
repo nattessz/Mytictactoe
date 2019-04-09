@@ -15,9 +15,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 
     private Button[][] buttons = new Button[3][3];
+
+    private AdView mAdView;
 
     private boolean player1Turn = true;
 
@@ -34,9 +41,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mAdView = findViewById(R.id.adView);
         textViewPlayer1 = findViewById(R.id.text_view_p1);
         textViewPlayer2 = findViewById(R.id.text_view_p2);
+        //Hirdetéshez:
+        MobileAds.initialize(this, "ca-app-pub-6516937270519450~8577438100");
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         //Gombok beállítása, bejárjuk a tömbött
         for (int i = 0; i < 3; i++) {
